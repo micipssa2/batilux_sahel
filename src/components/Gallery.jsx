@@ -10,7 +10,7 @@ const toneClass = {
 
 export default function Gallery() {
   return (
-    <section id="galerie" className="bg-ink-2 py-20 sm:py-28">
+    <section id="galerie" className="cv-auto bg-ink-2 py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <Eyebrow>Réalisations &amp; produits</Eyebrow>
         <div className="flex flex-wrap items-end justify-between gap-4">

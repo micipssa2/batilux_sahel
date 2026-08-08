@@ -4,7 +4,7 @@ import { WhatsAppIcon } from './icons.jsx'
 
 export default function GrosDetail() {
   return (
-    <section id="gros-detail" className="relative bg-ink">
+    <section id="gros-detail" className="cv-auto relative bg-ink">
       <div
         aria-hidden
         className="hidden lg:block absolute inset-y-0 left-1/2 w-px bg-gradient-to-b from-sage via-clay to-sage -translate-x-1/2 rotate-1 z-10"

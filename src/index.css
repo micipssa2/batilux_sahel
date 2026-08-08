@@ -91,7 +91,15 @@
     pointer-events: none;
     opacity: 0.5;
     mix-blend-mode: overlay;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-image: url("/textures/grain.png");
+    background-repeat: repeat;
+    background-size: 128px 128px;
+    /* Promote to its own GPU layer so the browser composites it once instead
+       of re-rasterizing on every scroll frame (this, plus swapping the old
+       live SVG feTurbulence filter for a static bitmap, is what fixes the
+       white flashing on fast scroll). */
+    transform: translateZ(0);
+    will-change: transform;
   }
 
   /* Section divider styled like a hairline trowel pass with a single swatch chip */
@@ -144,5 +152,13 @@
     background-color: var(--color-ink-3);
     background-image: radial-gradient(rgba(126, 167, 140, 0.35) 2px, transparent 2.2px);
     background-size: 16px 16px;
+  }
+
+  /* Skip rendering work for sections currently offscreen, so the browser
+     doesn't have to keep repainting every textured background on every
+     scroll frame — reduces jank/flashing on long pages like this one. */
+  .cv-auto {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 640px;
   }
 }

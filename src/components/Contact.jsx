@@ -52,8 +52,8 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="bg-ink-2 py-20 sm:py-28">
-      <div className="mx-auto max-w-7xl px-5 sm:px-8 grid lg:grid-cols-[1.4fr_1fr] gap-12">
+    <section id="contact" className="cv-auto bg-ink-2 py-20 sm:py-28">
+      <div className="mx-auto max-w-6xl px-5 sm:px-8 grid lg:grid-cols-[1fr_1.1fr] gap-12">
         <div>
           <Eyebrow>Contact</Eyebrow>
           <h2 className="font-display font-semibold text-3xl sm:text-4xl text-paper max-w-md">
@@ -70,7 +70,7 @@ export default function Contact() {
                 href={href}
                 target={href.startsWith('http') ? '_blank' : undefined}
                 rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                className="flex items-center gap-3 rounded-xl border border-stone/25 bg-ink px-4 py-6 min-h-[90px] hover:border-sage-light/50 transition-colors"
+                className="flex items-center gap-3 rounded-xl border border-stone/25 bg-ink px-4 py-3.5 hover:border-sage-light/50 transition-colors"
               >
                 <Icon className="w-5 h-5 text-sage-light shrink-0" />
                 <span>

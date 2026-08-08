@@ -2,3 +2,10 @@ node_modules
 dist
 .env
 .DS_Store
+
+# Backend (Python)
+backend/venv
+backend/__pycache__
+backend/**/__pycache__
+backend/*.pyc
+backend/uploads

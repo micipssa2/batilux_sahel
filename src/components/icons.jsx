@@ -103,3 +103,72 @@ export function ClockIcon({ className }) {
     </svg>
   )
 }
+
+export function SearchIcon({ className }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} {...base}>
+      <circle cx="10.5" cy="10.5" r="6.5" />
+      <path d="m20 20-4.3-4.3" />
+    </svg>
+  )
+}
+
+export function ZoomIcon({ className }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} {...base}>
+      <circle cx="10.5" cy="10.5" r="6.5" />
+      <path d="m20 20-4.3-4.3M10.5 7.7v5.6M7.7 10.5h5.6" />
+    </svg>
+  )
+}
+
+export function ChevronLeftIcon({ className }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} {...base}>
+      <path d="m14.5 5-7 7 7 7" />
+    </svg>
+  )
+}
+
+export function ChevronRightIcon({ className }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} {...base}>
+      <path d="m9.5 5 7 7-7 7" />
+    </svg>
+  )
+}
+
+export function StarIcon({ className }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} {...base}>
+      <path d="M12 4.5 14.3 9.6 20 10.3 15.8 14.2 16.9 19.7 12 17 7.1 19.7 8.2 14.2 4 10.3 9.7 9.6Z" />
+    </svg>
+  )
+}
+
+export function TagIcon({ className }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} {...base}>
+      <path d="M11.5 4.5H6a1.5 1.5 0 0 0-1.5 1.5v5.5L13 20l6-6-8.5-8.5Z" />
+      <circle cx="8.3" cy="8.3" r="0.9" fill="currentColor" stroke="none" />
+    </svg>
+  )
+}
+
+export function ArrowLeftIcon({ className }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} {...base}>
+      <path d="M19 12H5M11 6l-6 6 6 6" />
+    </svg>
+  )
+}
+
+export function ImageIcon({ className }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} {...base}>
+      <rect x="3.5" y="4.5" width="17" height="15" rx="2" />
+      <circle cx="8.5" cy="9.5" r="1.4" />
+      <path d="m5 17 4.5-4.5a1.6 1.6 0 0 1 2.2 0L15 15.8l1.3-1.3a1.6 1.6 0 0 1 2.2 0L20.5 16.5" />
+    </svg>
+  )
+}

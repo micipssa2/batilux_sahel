@@ -5,7 +5,7 @@ import { BUSINESS } from '../lib/content.js'
 
 export default function LocationSection() {
   return (
-    <section id="localisation" className="bg-ink py-20 sm:py-28">
+    <section id="localisation" className="cv-auto bg-ink py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-5 sm:px-8 grid lg:grid-cols-[1fr_1.2fr] gap-10 items-start">
         <motion.div
           initial={{ opacity: 0, y: 18 }}

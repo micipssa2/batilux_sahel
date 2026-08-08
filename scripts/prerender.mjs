@@ -1,5 +1,13 @@
 // Static HTML snapshot generator for search-engine crawlers that don't run JS.
-// This site is a single page (one route), so a single snapshot is enough.
+//
+// Snapshots the homepage ("/") only. Since Phase 5, the site also has
+// client-rendered catalogue routes (/catalogue, /catalogue/:famille,
+// /produit/:slug) fed by the backend API — these are NOT snapshotted here:
+// a crawler that fetches them without executing JS will currently see the
+// homepage snapshot instead. Proper per-product SEO (clean URLs, meta
+// title/description, Open Graph, sitemap) is planned for Phase 7 and will
+// likely replace or extend this script rather than just adding more
+// snapshots to it.
 //
 // Setup (not included in package.json by default, to keep `npm install`
 // lightweight and network-independent):

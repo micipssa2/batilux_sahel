@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 import Eyebrow from './Eyebrow.jsx'
 import { CATEGORIES } from '../lib/content.js'
 
@@ -15,7 +16,7 @@ const offset = ['lg:mt-0', 'lg:mt-8', 'lg:mt-2', 'lg:mt-10']
 
 export default function Categories() {
   return (
-    <section id="categories" className="bg-ink py-20 sm:py-28">
+    <section id="categories" className="cv-auto bg-ink py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <Eyebrow tone="clay">Le catalogue</Eyebrow>
         <h2 className="font-display font-semibold text-3xl sm:text-4xl text-paper max-w-xl">
@@ -42,6 +43,15 @@ export default function Categories() {
               </div>
             </motion.article>
           ))}
+        </div>
+
+        <div className="mt-10 flex justify-center sm:justify-start">
+          <Link
+            to="/catalogue"
+            className="inline-flex items-center justify-center gap-2 rounded-full border border-clay/60 px-6 py-3 font-medium text-paper hover:bg-clay/15 transition-colors"
+          >
+            Voir tout le catalogue
+          </Link>
         </div>
       </div>
     </section>

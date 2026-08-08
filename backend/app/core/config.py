@@ -29,6 +29,13 @@ class Settings(BaseSettings):
     UPLOAD_DIR: str = "uploads"
     MAX_UPLOAD_SIZE_MB: int = 5
 
+    # --- Cloudinary (stockage des images familles/produits) ---
+    # Récupérables dans le dashboard Cloudinary (cloudinary.com/console).
+    # Ne jamais commiter de vraies valeurs : uniquement via .env (gitignored).
+    CLOUDINARY_CLOUD_NAME: str = ""
+    CLOUDINARY_API_KEY: str = ""
+    CLOUDINARY_API_SECRET: str = ""
+
     # --- JWT ---
     # ⚠️ Valeur par défaut UNIQUEMENT pour le dev. En prod, générer avec :
     #    python -c "import secrets; print(secrets.token_urlsafe(64))"

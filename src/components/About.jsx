@@ -5,7 +5,7 @@ import { BUSINESS } from '../lib/content.js'
 
 export default function About() {
   return (
-    <section id="apropos" className="bg-ink-2 py-20 sm:py-28">
+    <section id="apropos" className="cv-auto bg-ink-2 py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-5 sm:px-8 grid lg:grid-cols-[1.4fr_1fr] gap-12 lg:gap-16 items-start">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
