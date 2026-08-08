@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <circle cx="50" cy="50" r="49" fill="none" stroke="#3e6b4e" stroke-width="2"/>
+  <circle cx="50" cy="50" r="48" fill="#1a1a16"/>
+  <path d="M32 40 L50 24 L68 40" fill="none" stroke="#7ea78c" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="50" y="78" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="40" fill="#3e6b4e">B</text>
+</svg>

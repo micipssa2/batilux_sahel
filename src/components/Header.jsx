@@ -1,0 +1,91 @@
+import { useEffect, useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import LogoMark from './LogoMark.jsx'
+import { WhatsAppIcon, MenuIcon, CloseIcon } from './icons.jsx'
+import { BUSINESS, NAV_LINKS } from '../lib/content.js'
+
+export default function Header() {
+  const [open, setOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 12)
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
+  return (
+    <header
+      className={`fixed top-0 inset-x-0 z-50 transition-colors duration-300 ${
+        scrolled ? 'bg-ink/90 backdrop-blur-sm border-b border-stone/20' : 'bg-transparent'
+      }`}
+    >
+      <div className="mx-auto max-w-6xl px-5 sm:px-8 flex items-center justify-between h-16 sm:h-20">
+        <a href="#top" className="flex items-center gap-3 shrink-0">
+          <LogoMark size={40} />
+          <span className="font-display font-semibold text-paper text-lg tracking-tight hidden sm:inline">
+            Batilux Sahel
+          </span>
+        </a>
+
+        <nav className="hidden lg:flex items-center gap-7 font-mono text-xs uppercase tracking-wider text-stone">
+          {NAV_LINKS.map((l) => (
+            <a key={l.href} href={l.href} className="hover:text-paper transition-colors">
+              {l.label}
+            </a>
+          ))}
+        </nav>
+
+        <div className="flex items-center gap-2">
+          <a
+            href={BUSINESS.whatsapp}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden sm:inline-flex items-center gap-2 rounded-full bg-sage px-4 py-2 text-sm font-medium text-paper hover:bg-sage-deep transition-colors"
+          >
+            <WhatsAppIcon className="w-4 h-4" />
+            WhatsApp
+          </a>
+          <button
+            aria-label={open ? 'Fermer le menu' : 'Ouvrir le menu'}
+            aria-expanded={open}
+            onClick={() => setOpen((v) => !v)}
+            className="lg:hidden p-2 text-paper"
+          >
+            {open ? <CloseIcon className="w-6 h-6" /> : <MenuIcon className="w-6 h-6" />}
+          </button>
+        </div>
+      </div>
+
+      <AnimatePresence>
+        {open && (
+          <motion.nav
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.22, ease: 'easeInOut' }}
+            className="lg:hidden overflow-hidden bg-ink border-b border-stone/20"
+          >
+            <div className="px-5 py-4 flex flex-col gap-4 font-mono text-sm uppercase tracking-wider text-stone">
+              {NAV_LINKS.map((l) => (
+                <a key={l.href} href={l.href} onClick={() => setOpen(false)} className="hover:text-paper">
+                  {l.label}
+                </a>
+              ))}
+              <a
+                href={BUSINESS.whatsapp}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full bg-sage px-4 py-2 text-paper normal-case font-body text-sm w-fit mt-1"
+              >
+                <WhatsAppIcon className="w-4 h-4" />
+                Écrire sur WhatsApp
+              </a>
+            </div>
+          </motion.nav>
+        )}
+      </AnimatePresence>
+    </header>
+  )
+}

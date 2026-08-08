@@ -1,0 +1,148 @@
+@import "tailwindcss";
+
+@theme {
+  /* Palette — derived from the Batilux logo (sage "B" on textured anthracite) */
+  --color-ink: #1a1a16;
+  --color-ink-2: #221f19;
+  --color-ink-3: #2b2620;
+  --color-sage: #3e6b4e;
+  --color-sage-deep: #2a4a37;
+  --color-sage-light: #7ea78c;
+  --color-clay: #c1825b;
+  --color-clay-deep: #9a6544;
+  --color-clay-light: #dba883;
+  --color-paper: #f3f0e8;
+  --color-paper-dim: #e6e0d1;
+  --color-stone: #8c8579;
+  --color-stone-dark: #5c584d;
+
+  --font-display: "Bricolage Grotesque", "Arial Black", sans-serif;
+  --font-body: "IBM Plex Sans", "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", "Courier New", monospace;
+
+  --shadow-plaque: 0 1px 0 0 rgba(243, 240, 232, 0.06) inset, 0 12px 30px -12px rgba(0, 0, 0, 0.55);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: var(--color-ink);
+    color: var(--color-paper);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.01em;
+  }
+  ::selection {
+    background-color: var(--color-clay);
+    color: var(--color-ink);
+  }
+  :focus-visible {
+    outline: 3px solid var(--color-clay-light);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *, *::before, *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  /* Freshly-rendered wall texture: layered raking-light strokes + grain, used behind the hero */
+  .texture-render {
+    position: relative;
+    background-color: var(--color-ink);
+    background-image:
+      radial-gradient(120% 90% at 12% -10%, rgba(62, 107, 78, 0.35), transparent 55%),
+      radial-gradient(90% 70% at 100% 110%, rgba(193, 130, 91, 0.22), transparent 60%),
+      repeating-linear-gradient(
+        118deg,
+        rgba(243, 240, 232, 0.05) 0px,
+        rgba(243, 240, 232, 0.05) 1px,
+        transparent 1px,
+        transparent 9px
+      ),
+      repeating-linear-gradient(
+        26deg,
+        rgba(0, 0, 0, 0.18) 0px,
+        rgba(0, 0, 0, 0.18) 2px,
+        transparent 2px,
+        transparent 14px
+      );
+  }
+
+  .texture-grain::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.5;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* Section divider styled like a hairline trowel pass with a single swatch chip */
+  .swatch-divider {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .swatch-divider::before,
+  .swatch-divider::after {
+    content: "";
+    height: 1px;
+    flex: 1;
+    background: linear-gradient(90deg, transparent, var(--color-stone), transparent);
+    opacity: 0.5;
+  }
+
+  .plaque {
+    box-shadow: var(--shadow-plaque);
+  }
+
+  /* Category swatch textures — each category reads as a different material, not a repeated card */
+  .texture-brush {
+    background-color: var(--color-ink-3);
+    background-image: repeating-linear-gradient(
+      100deg,
+      rgba(126, 167, 140, 0.22) 0px,
+      rgba(126, 167, 140, 0.22) 3px,
+      transparent 3px,
+      transparent 16px
+    );
+  }
+  .texture-tile {
+    background-color: var(--color-ink-3);
+    background-image:
+      repeating-linear-gradient(0deg, rgba(243, 240, 232, 0.09) 0px, rgba(243, 240, 232, 0.09) 1px, transparent 1px, transparent 24px),
+      repeating-linear-gradient(90deg, rgba(243, 240, 232, 0.09) 0px, rgba(243, 240, 232, 0.09) 1px, transparent 1px, transparent 24px);
+  }
+  .texture-stucco {
+    background-color: var(--color-ink-3);
+    background-image:
+      radial-gradient(1.5px 1.5px at 20% 30%, rgba(193,130,91,0.4) 40%, transparent 41%),
+      radial-gradient(1.5px 1.5px at 70% 60%, rgba(193,130,91,0.35) 40%, transparent 41%),
+      radial-gradient(1.5px 1.5px at 40% 80%, rgba(193,130,91,0.3) 40%, transparent 41%),
+      radial-gradient(1.5px 1.5px at 85% 20%, rgba(193,130,91,0.3) 40%, transparent 41%),
+      repeating-linear-gradient(35deg, rgba(0,0,0,0.15) 0px, rgba(0,0,0,0.15) 1px, transparent 1px, transparent 10px);
+    background-size: 60px 60px, 60px 60px, 60px 60px, 60px 60px, auto;
+  }
+  .texture-dot {
+    background-color: var(--color-ink-3);
+    background-image: radial-gradient(rgba(126, 167, 140, 0.35) 2px, transparent 2.2px);
+    background-size: 16px 16px;
+  }
+}

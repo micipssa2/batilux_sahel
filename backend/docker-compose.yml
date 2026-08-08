@@ -1,0 +1,15 @@
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: batilux
+      POSTGRES_PASSWORD: batilux
+      POSTGRES_DB: batilux_sahel
+    ports:
+      - "5432:5432"
+    volumes:
+      - batilux_pgdata:/var/lib/postgresql/data
+
+volumes:
+  batilux_pgdata:
