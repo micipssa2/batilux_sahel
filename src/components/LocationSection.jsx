@@ -44,12 +44,15 @@ export default function LocationSection() {
           transition={{ duration: 0.6, delay: 0.08 }}
           className="rounded-2xl overflow-hidden border border-stone/25 h-80 sm:h-full min-h-80"
         >
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3213.9234529391533!2d4.260303111651456!3d36.33840499347916!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x128c5bfd1d3d24a3%3A0x12bfb3d1f748887d!2sBATILUX%20SAHEL!5e0!3m2!1sfr!2sdz!4v1786266509857!5m2!1sfr!2sdz"
-            width="600" height="450" 
-            style="border:0;" 
-            allowfullscreen="" 
-            loading="lazy" 
-            referrerpolicy="strict-origin-when-cross-origin"></iframe>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3213.9234529391533!2d4.260303111651456!3d36.33840499347916!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x128c5bfd1d3d24a3%3A0x12bfb3d1f748887d!2sBATILUX%20SAHEL!5e0!3m2!1sfr!2sdz!4v1786266509857!5m2!1sfr!2sdz"
+            width="600"
+            height="450"
+            style={{ border: 0 }}
+            allowFullScreen=""
+            loading="lazy"
+            referrerPolicy="strict-origin-when-cross-origin"
+          />
         </motion.div>
       </div>
     </section>
