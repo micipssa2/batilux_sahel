@@ -64,23 +64,32 @@ export default function Contact() {
           </p>
 
           <div className="mt-8 grid sm:grid-cols-2 gap-3">
-            {QUICK_LINKS.map(({ href, icon: Icon, label, value }) => (
-              <a
-                key={label}
-                href={href}
-                target={href.startsWith('http') ? '_blank' : undefined}
-                rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                className="flex items-center gap-3 rounded-xl border border-stone/25 bg-ink px-4 py-3.5 hover:border-sage-light/50 transition-colors"
-              >
-                <Icon className="w-5 h-5 text-sage-light shrink-0" />
-                <span>
-                  <span className="block text-xs text-stone font-mono uppercase tracking-wider">
-                    {label}
-                  </span>
-                  <span className="text-sm text-paper/90">{value}</span>
-                </span>
-              </a>
-            ))}
+            {QUICK_LINKS.map(({ href, icon: Icon, label, value }) => {
+  const isExternal = href.startsWith('http')
+  return (
+    <a
+      key={label}
+      href={href}
+      target={isExternal ? '_blank' : undefined}
+      rel={isExternal ? 'noopener noreferrer' : undefined}
+      className="flex items-center gap-3 rounded-xl border border-stone/25 bg-ink px-4 py-3.5 hover:border-sage-light/50 transition-colors"
+    >
+      <Icon className="w-5 h-5 text-sage-light shrink-0" />
+      
+      {/* 1. Ajout de min-w-0 ici pour empêcher le conteneur de déborder */}
+      <span className="min-w-0 flex-1">
+        <span className="block text-xs text-stone font-mono uppercase tracking-wider">
+          {label}
+        </span>
+        
+        {/* 2. Ajout de "block" et "truncate" pour couper avec des points de suspension (...) */}
+        <span className="block text-sm text-paper/90 truncate">
+          {value}
+        </span>
+      </span>
+    </a>
+  )
+})}
           </div>
         </div>
 
@@ -156,7 +165,7 @@ export default function Contact() {
           )}
           {!emailjsConfigured && (
             <p className="text-xs text-stone">
-              Formulaire non actif pour l'instant (identifiants EmailJS à renseigner dans .env).
+              Formulaire non actif pour l'instant .
             </p>
           )}
         </motion.form>
