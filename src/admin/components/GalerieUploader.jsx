@@ -131,7 +131,7 @@ export default function GalerieUploader({ produit, onChange }) {
           {produit.images.map((img, i) => (
             <div key={img.id} className="group relative aspect-square rounded-lg overflow-hidden border border-stone/25">
               <img src={img.url} alt={img.alt_text ?? ''} className="h-full w-full object-cover" />
-              <div className="absolute inset-0 bg-ink/70 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center gap-1.5">
+              <div className="absolute inset-0 bg-ink/70 opacity-100 [@media(hover:hover)]:opacity-0 [@media(hover:hover)]:group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center gap-1.5">
                 <div className="flex gap-1 font-mono text-xs">
                   <button
                     type="button"

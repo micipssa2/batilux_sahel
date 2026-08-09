@@ -117,18 +117,20 @@ export default function JournalPage() {
         <>
           <div className="mt-6 rounded-2xl border border-stone/25 bg-ink-2 divide-y divide-stone/15 overflow-hidden">
             {result.items.map((log) => (
-              <div key={log.id} className="flex items-start gap-4 px-5 py-3.5 text-sm">
-                <span className="w-36 shrink-0 font-mono text-xs text-stone pt-0.5">{formatDate(log.created_at)}</span>
-                <span
-                  className={`w-2 h-2 rounded-full mt-1.5 shrink-0 ${
-                    log.resultat === 'succes' ? 'bg-sage-light' : 'bg-clay-light'
-                  }`}
-                />
+              <div key={log.id} className="flex flex-col gap-2 px-5 py-3.5 text-sm sm:flex-row sm:items-start sm:gap-4">
+                <div className="flex items-center gap-2 sm:w-36 sm:shrink-0 sm:pt-0.5">
+                  <span
+                    className={`w-2 h-2 rounded-full shrink-0 ${
+                      log.resultat === 'succes' ? 'bg-sage-light' : 'bg-clay-light'
+                    }`}
+                  />
+                  <span className="font-mono text-xs text-stone">{formatDate(log.created_at)}</span>
+                </div>
                 <div className="min-w-0 flex-1">
                   <p className="text-paper">{ACTION_LABELS[log.action] ?? log.action}</p>
                   {log.details && <p className="text-xs text-stone mt-0.5">{log.details}</p>}
                 </div>
-                <div className="shrink-0 text-right font-mono text-xs text-stone">
+                <div className="shrink-0 font-mono text-xs text-stone sm:text-right">
                   <p>{log.admin_email ?? '—'}</p>
                   <p>{log.ip_address}</p>
                 </div>

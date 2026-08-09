@@ -130,56 +130,60 @@ export default function ProduitsPage() {
         <>
           <div className="mt-6 rounded-2xl border border-stone/25 bg-ink-2 divide-y divide-stone/15">
             {result.items.map((p) => (
-              <div key={p.id} className="flex items-center gap-4 px-5 py-3.5">
-                <div className="h-12 w-12 shrink-0 rounded-lg overflow-hidden bg-ink-3 texture-dot">
-                  {p.image_principale ? (
-                    <img src={p.image_principale} alt="" className="h-full w-full object-cover" />
-                  ) : (
-                    <ImagePlaceholder />
-                  )}
-                </div>
-                <div className="min-w-0 flex-1">
-                  <div className="flex items-center gap-2 flex-wrap">
-                    <p className="text-sm font-medium text-paper truncate">{p.nom}</p>
-                    {!p.actif && (
-                      <span className="rounded-full bg-ink-3 px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider text-stone">
-                        Inactif
-                      </span>
-                    )}
-                    {p.en_vedette && (
-                      <span className="rounded-full bg-ink-3 px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider text-clay-light">
-                        Vedette
-                      </span>
-                    )}
-                    {p.en_promotion && (
-                      <span className="rounded-full bg-clay/20 px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider text-clay-light">
-                        Promo
-                      </span>
+              <div key={p.id} className="flex flex-col gap-3 px-5 py-4 sm:flex-row sm:items-center sm:gap-4 sm:py-3.5">
+                <div className="flex items-center gap-3 min-w-0">
+                  <div className="h-12 w-12 shrink-0 rounded-lg overflow-hidden bg-ink-3 texture-dot">
+                    {p.image_principale ? (
+                      <img src={p.image_principale} alt="" className="h-full w-full object-cover" />
+                    ) : (
+                      <ImagePlaceholder />
                     )}
                   </div>
-                  <p className="text-xs text-stone">
-                    {p.famille_nom} · Réf. {p.reference}
-                    {p.marque ? ` · ${p.marque}` : ''}
-                  </p>
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <p className="text-sm font-medium text-paper truncate">{p.nom}</p>
+                      {!p.actif && (
+                        <span className="rounded-full bg-ink-3 px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider text-stone">
+                          Inactif
+                        </span>
+                      )}
+                      {p.en_vedette && (
+                        <span className="rounded-full bg-ink-3 px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider text-clay-light">
+                          Vedette
+                        </span>
+                      )}
+                      {p.en_promotion && (
+                        <span className="rounded-full bg-clay/20 px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider text-clay-light">
+                          Promo
+                        </span>
+                      )}
+                    </div>
+                    <p className="text-xs text-stone">
+                      {p.famille_nom} · Réf. {p.reference}
+                      {p.marque ? ` · ${p.marque}` : ''}
+                    </p>
+                  </div>
                 </div>
-                <p className="shrink-0 text-sm text-sage-light">{formatPrice(p.prix) ?? '—'}</p>
-                <div className="flex gap-2 font-mono text-xs uppercase tracking-wider shrink-0">
-                  <Link
-                    to={`/admin/produits/${p.id}`}
-                    className="rounded-full border border-stone/30 px-3 py-1.5 text-paper hover:border-paper/50 transition-colors"
-                  >
-                    Modifier
-                  </Link>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setDeleteTarget(p)
-                      setDeleteError('')
-                    }}
-                    className="rounded-full border border-clay/40 px-3 py-1.5 text-clay-light hover:bg-clay/10 transition-colors"
-                  >
-                    Supprimer
-                  </button>
+                <div className="flex items-center justify-between gap-3 sm:shrink-0 sm:justify-end">
+                  <p className="text-sm text-sage-light">{formatPrice(p.prix) ?? '—'}</p>
+                  <div className="flex gap-2 font-mono text-xs uppercase tracking-wider shrink-0">
+                    <Link
+                      to={`/admin/produits/${p.id}`}
+                      className="rounded-full border border-stone/30 px-3 py-1.5 text-paper hover:border-paper/50 transition-colors"
+                    >
+                      Modifier
+                    </Link>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setDeleteTarget(p)
+                        setDeleteError('')
+                      }}
+                      className="rounded-full border border-clay/40 px-3 py-1.5 text-clay-light hover:bg-clay/10 transition-colors"
+                    >
+                      Supprimer
+                    </button>
+                  </div>
                 </div>
               </div>
             ))}

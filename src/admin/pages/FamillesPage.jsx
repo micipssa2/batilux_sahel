@@ -85,47 +85,49 @@ export default function FamillesPage() {
       {familles && familles.length > 0 && (
         <div className="mt-8 rounded-2xl border border-stone/25 bg-ink-2 divide-y divide-stone/15">
           {sorted.map((f, i) => (
-            <div key={f.id} className="flex items-center gap-4 px-5 py-4">
-              <div className="flex flex-col gap-0.5 font-mono text-xs">
-                <button
-                  type="button"
-                  disabled={i === 0}
-                  onClick={() => move(f, -1, sorted)}
-                  className="text-stone hover:text-paper disabled:opacity-20 disabled:hover:text-stone transition-colors"
-                  aria-label="Monter"
-                >
-                  ▲
-                </button>
-                <button
-                  type="button"
-                  disabled={i === sorted.length - 1}
-                  onClick={() => move(f, 1, sorted)}
-                  className="text-stone hover:text-paper disabled:opacity-20 disabled:hover:text-stone transition-colors"
-                  aria-label="Descendre"
-                >
-                  ▼
-                </button>
-              </div>
-
-              <div className="h-14 w-14 shrink-0 rounded-lg overflow-hidden bg-ink-3 texture-dot">
-                {f.image ? <img src={f.image} alt="" className="h-full w-full object-cover" /> : <ImagePlaceholder />}
-              </div>
-
-              <div className="min-w-0 flex-1">
-                <div className="flex items-center gap-2">
-                  <p className="text-sm font-medium text-paper truncate">{f.nom}</p>
-                  {!f.actif && (
-                    <span className="rounded-full bg-ink-3 px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider text-stone shrink-0">
-                      Inactive
-                    </span>
-                  )}
+            <div key={f.id} className="flex flex-col gap-3 px-5 py-4 sm:flex-row sm:items-center sm:gap-4 sm:py-4">
+              <div className="flex items-center gap-3 min-w-0">
+                <div className="flex flex-col gap-0.5 font-mono text-xs shrink-0">
+                  <button
+                    type="button"
+                    disabled={i === 0}
+                    onClick={() => move(f, -1, sorted)}
+                    className="text-stone hover:text-paper disabled:opacity-20 disabled:hover:text-stone transition-colors"
+                    aria-label="Monter"
+                  >
+                    ▲
+                  </button>
+                  <button
+                    type="button"
+                    disabled={i === sorted.length - 1}
+                    onClick={() => move(f, 1, sorted)}
+                    className="text-stone hover:text-paper disabled:opacity-20 disabled:hover:text-stone transition-colors"
+                    aria-label="Descendre"
+                  >
+                    ▼
+                  </button>
                 </div>
-                <p className="text-xs text-stone">
-                  {f.nb_produits} produit{f.nb_produits > 1 ? 's' : ''}
-                </p>
+
+                <div className="h-14 w-14 shrink-0 rounded-lg overflow-hidden bg-ink-3 texture-dot">
+                  {f.image ? <img src={f.image} alt="" className="h-full w-full object-cover" /> : <ImagePlaceholder />}
+                </div>
+
+                <div className="min-w-0 flex-1">
+                  <div className="flex items-center gap-2">
+                    <p className="text-sm font-medium text-paper truncate">{f.nom}</p>
+                    {!f.actif && (
+                      <span className="rounded-full bg-ink-3 px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider text-stone shrink-0">
+                        Inactive
+                      </span>
+                    )}
+                  </div>
+                  <p className="text-xs text-stone">
+                    {f.nb_produits} produit{f.nb_produits > 1 ? 's' : ''}
+                  </p>
+                </div>
               </div>
 
-              <div className="flex gap-2 font-mono text-xs uppercase tracking-wider shrink-0">
+              <div className="flex gap-2 font-mono text-xs uppercase tracking-wider shrink-0 self-end sm:self-auto">
                 <button
                   type="button"
                   onClick={() => setModalFamille(f)}

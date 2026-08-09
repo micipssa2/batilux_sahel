@@ -58,12 +58,18 @@ REFRESH_COOKIE_PATH = "/api/auth"
 
 
 def _set_refresh_cookie(response: Response, raw_token: str) -> None:
+    is_prod = settings.ENVIRONMENT == "production"
     response.set_cookie(
         key=REFRESH_COOKIE_NAME,
         value=raw_token,
         httponly=True,
-        secure=settings.ENVIRONMENT == "production",  # exige HTTPS en prod
-        samesite="strict",  # protection CSRF de base : le cookie ne part jamais en cross-site
+        secure=is_prod,  # exige HTTPS en prod (obligatoire aussi pour SameSite=None ci-dessous)
+        # "none" en prod : nécessaire dès que le frontend et le backend ne sont pas sur le
+        # même site (ex. Netlify + Render) — sinon le cookie ne repart jamais vers l'API et
+        # /auth/refresh échoue en boucle. Sans HTTPS ce serait dangereux, d'où le "secure=is_prod"
+        # ci-dessus qui va toujours de pair. En dev (http://localhost), "strict" reste le plus
+        # protecteur puisque front et back sont same-site.
+        samesite="none" if is_prod else "strict",
         max_age=settings.REFRESH_TOKEN_EXPIRE_DAYS * 24 * 3600,
         path=REFRESH_COOKIE_PATH,
     )
