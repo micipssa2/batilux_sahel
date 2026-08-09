@@ -44,6 +44,26 @@ export default function Header() {
             </a>
           ))}
         </nav>
+
+        <div className="flex items-center gap-2">
+          <a
+            href={BUSINESS.whatsapp}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden sm:inline-flex items-center gap-2 rounded-full bg-sage px-4 py-2 text-sm font-medium text-paper hover:bg-sage-deep transition-colors"
+          >
+            <WhatsAppIcon className="w-4 h-4" />
+            WhatsApp
+          </a>
+          <button
+            aria-label={open ? 'Fermer le menu' : 'Ouvrir le menu'}
+            aria-expanded={open}
+            onClick={() => setOpen((v) => !v)}
+            className="lg:hidden p-2 text-paper"
+          >
+            {open ? <CloseIcon className="w-6 h-6" /> : <MenuIcon className="w-6 h-6" />}
+          </button>
+        </div>
       </div>
 
       <AnimatePresence>
