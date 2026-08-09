@@ -3,10 +3,10 @@ export const BUSINESS = {
   phoneDisplay: '0770 54 58 97',
   phoneTel: '+213770545897',
   whatsapp: 'https://wa.me/213770545897',
-  messenger: 'https://m.me/BatiluxSahel',
+  messenger: 'https://m.me/BATILUX',
   email: 'ets.tamsaouetelyes@hotmail.com',
   address: 'Ahnif centre, Wilaya de Bouira, Algérie',
-  facebook: 'https://www.facebook.com/BatiluxSahel',
+  facebook: 'https://www.facebook.com/BATILUX',
   instagram: 'https://www.instagram.com/batilux',
   tiktok: 'https://www.tiktok.com/@batiluxsahel',
   mapEmbed:
