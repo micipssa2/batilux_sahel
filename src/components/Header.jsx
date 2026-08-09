@@ -89,15 +89,7 @@ export default function Header() {
                   {l.label}
                 </a>
               ))}
-              <a
-                href={BUSINESS.whatsapp}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full bg-sage px-4 py-2 text-paper normal-case font-body text-sm w-fit mt-1"
-              >
-                <WhatsAppIcon className="w-4 h-4" />
-                Écrire sur WhatsApp
-              </a>
+              
             </div>
           </motion.nav>
         )}
