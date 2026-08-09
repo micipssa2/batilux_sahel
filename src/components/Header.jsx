@@ -20,9 +20,12 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 inset-x-0 z-50 transition-colors duration-300 ${scrolled ? 'bg-ink/95 border-b border-stone/20' : 'bg-transparent'
-        }`}
-    >
+  className={`fixed top-0 inset-x-0 z-50 transition-colors duration-300 ${
+    scrolled
+      ? 'bg-ink/95 border-b border-stone/20'
+      : 'bg-transparent'
+  }`}
+>
       <div className="mx-auto max-w-6xl px-5 sm:px-8 flex items-center justify-between h-16 sm:h-20">
         {/* Sur la homepage : comportement d'origine inchangé (ancre #top).
             Ailleurs : ramène simplement à l'accueil. */}
